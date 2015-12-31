@@ -1,13 +1,20 @@
-$docker-lightgrey: #dde0e2;
-$docker-bluegrey: #566c7a;
-$docker-grey: #8c9ba4;
-$docker-blue: #23b9e7;
+$lightgrey: #c4ccd1;
+$bg-grey: #dde0e2;
+$bluegrey: #566c7a;
+$grey: #8c9ba4;
+$blue: #23b9e7;
+$orange: #ffcf99;
 
 /*Components*/
 
 .btn-blue {
-    background: $docker-blue;
+    background: $blue;
     color: white;
+}
+
+.btn-private {
+    border: 1px solid $orange;
+    color: $orange;
 }
 
 
@@ -15,40 +22,50 @@ $docker-blue: #23b9e7;
 
 body {
     font-size: 1.1rem;
+    /*background: $blue;*/
 }
 
 #wrapper {
+    background: white;
     margin: 20px auto;
     max-width: 1000px;
-    border-top: 1px solid $docker-blue;
+    border-top: 1px solid $blue;
     border-right: 1px solid black;
     border-left: 1px solid black;
 }
 
 .controls {
     margin: 20px 0;
-    color: $docker-grey;
-    height: 50px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid $docker-lightgrey;
+    color: $grey;
+    height: 20px;
     .dropdown {
         display: inline;
         button {
             background: white;
-            color: $docker-grey;
+            color: $grey;
             padding-left: 10px;
             padding-right: 10px;
+            font-size: 1.1rem;
+        }
+    }
+    .dropdown-menu>li>a{
+      font-size: 1rem;
+    }
+    .left-column{
+      padding-left: 0;
+    }
+    .right-column {
+        text-align: right;
+        padding-right: 0;
+        button {
+            font-size: 1.1rem;
         }
     }
 }
 
-.right-column {
-    text-align: right;
-}
-
 .repos {
     height: 450px;
-    color: $docker-bluegrey;
+    color: $bluegrey;
 }
 
 #page-content-wrapper {
@@ -58,44 +75,73 @@ body {
         text-align: center;
         margin-bottom: 50px;
         .pagination>li>a {
-          background: $docker-lightgrey;
-          color: $docker-grey;
-          margin:2px;
-          padding:1px 5px;
-          font-size: 1rem;
-          &:hover, &.active{
-            color:white;
-            background: $docker-blue;
-          }
+            background: $bg-grey;
+            color: $grey;
+            margin: 2px;
+            padding: 1px 5px;
+            font-size: 1rem;
+            &:hover,
+            &.active {
+                color: white;
+                background: $blue;
+            }
+        }
+    }
+    article {
+        border-top: 1px solid $lightgrey;
+        padding: 10px 0;
+        .title {
+            font-weight: bold;
+        }
+        p {
+            color: $lightgrey;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        button {
+            margin-left: 5px;
+            height: 14px;
+            font-size: 1rem;
+            line-height: 1;
+            padding-bottom: 14px;
         }
     }
 }
 
 #sidebar-wrapper {
-    height: 595px;
+    padding-top: 10px;
+    height: 605px;
     width: 65px;
     float: left;
-    border-right: 1px solid $docker-lightgrey;
+    border-right: 1px solid $lightgrey;
     ul {
         padding-left: 0px;
     }
     li {
         list-style: none;
         a {
+            -webkit-transition: .25s all ease;
+            -moz-transition: .25s all ease;
+            -ms-transition: .25s all ease;
+            -o-transition: .25s all ease;
+            transition: .25s all ease;
             display: block;
             padding: 12px 26px;
             text-decoration: none;
-            color: $docker-lightgrey;
+            color: $lightgrey;
             border-left: 2px solid white;
             &:hover,
             &.active {
-                color: $docker-blue;
-                border-left: 2px solid $docker-blue;
+                color: $blue;
+                border-left: 2px solid $blue;
+            }
+            i{
+              font-size: 1.2rem;
             }
         }
-      /*  a.active {
-            color: $docker-blue;
-            border-left: 2px solid $docker-blue;
+        /*  a.active {
+            color: $blue;
+            border-left: 2px solid $blue;
         }*/
     }
 }

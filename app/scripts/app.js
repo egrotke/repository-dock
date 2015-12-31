@@ -1,12 +1,12 @@
 'use strict';
 /* App Module */
 
-var helloWorldApp = angular.module('helloWorldApp', [
+var repoApp = angular.module('repoApp', [
   'ngRoute',
-  'helloWorldControllers'
+  'repoControllers'
 ]);
 
-helloWorldApp.config(['$routeProvider', '$locationProvider',
+repoApp.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
       when('/', {

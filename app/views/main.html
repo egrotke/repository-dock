@@ -1,3 +1,43 @@
-<div class="container">
-  {{message}}
+  <!-- {{repos}} -->
+<div ng-repeat="item in repos">
+  <article class="repo">
+    <span class="account-and-name">{{item.account}}/
+    <span class="title">{{item.title}}</span>
+       <button class="btn btn-default btn-xs btn-private">{{item.isPrivate}}</button>
+    </span>
+    <p>{{item.description}}</p>
+  </article>
 </div>
+<!-- <article class="repo">
+    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
+       <button class="btn btn-default btn-xs btn-private">private</button>
+    </span>
+    <p>This is the description, not the README, of this wonderful repo.</p>
+  </article>
+  <article class="repo">
+    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
+       <button class="btn btn-default btn-xs btn-private">private</button>
+    </span>
+    <p>This is the description, not the README, of this wonderful repo.</p>
+  </article>
+
+  <article class="repo">
+    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
+       <button class="btn btn-default btn-xs btn-private">private</button>
+    </span>
+    <p>This is the description, not the README, of this wonderful repo.</p>
+  </article>
+
+  <article class="repo">
+    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
+       <button class="btn btn-default btn-xs btn-private">private</button>
+    </span>
+    <p>This is the description, not the README, of this wonderful repo.</p>
+  </article>
+
+  <article class="repo">
+    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
+       <button class="btn btn-default btn-xs btn-private">private</button>
+    </span>
+    <p>This is the description, not the README, of this wonderful repo.</p>
+  </article> -->

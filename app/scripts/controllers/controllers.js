@@ -1,15 +1,21 @@
 'use strict';
 /* Controllers */
 
-var helloWorldControllers = 
-angular.module('helloWorldControllers', []);
+var repoControllers = 
+angular.module('repoControllers', []);
 
-helloWorldControllers.controller('MainCtrl', ['$scope', 
-function MainCtrl($scope) {
-  $scope.message = "Hello World";
+repoControllers.controller('MainCtrl', ['$scope', '$http', 
+function MainCtrl($scope, $http) {
+  $scope.message ="Hello main";
+  $http.get('json/repos.json').success(function(data) {
+       $scope.repos = data.repos;
+       console.log("data");
+       console.log($scope.repos);
+   });
+
 }]);
 
-helloWorldControllers.controller('ShowCtrl', ['$scope', 
+repoControllers.controller('ShowCtrl', ['$scope', 
 function ShowCtrl($scope) {
   $scope.message = "Show The World";
 }]);
