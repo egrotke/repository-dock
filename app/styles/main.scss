@@ -1,0 +1,101 @@
+$docker-lightgrey: #dde0e2;
+$docker-bluegrey: #566c7a;
+$docker-grey: #8c9ba4;
+$docker-blue: #23b9e7;
+
+/*Components*/
+
+.btn-blue {
+    background: $docker-blue;
+    color: white;
+}
+
+
+/*End Components*/
+
+body {
+    font-size: 1.1rem;
+}
+
+#wrapper {
+    margin: 20px auto;
+    max-width: 1000px;
+    border-top: 1px solid $docker-blue;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.controls {
+    margin: 20px 0;
+    color: $docker-grey;
+    height: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $docker-lightgrey;
+    .dropdown {
+        display: inline;
+        button {
+            background: white;
+            color: $docker-grey;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}
+
+.right-column {
+    text-align: right;
+}
+
+.repos {
+    height: 450px;
+    color: $docker-bluegrey;
+}
+
+#page-content-wrapper {
+    margin-left: 100px;
+    margin-right: 50px;
+    #pager {
+        text-align: center;
+        margin-bottom: 50px;
+        .pagination>li>a {
+          background: $docker-lightgrey;
+          color: $docker-grey;
+          margin:2px;
+          padding:1px 5px;
+          font-size: 1rem;
+          &:hover, &.active{
+            color:white;
+            background: $docker-blue;
+          }
+        }
+    }
+}
+
+#sidebar-wrapper {
+    height: 595px;
+    width: 65px;
+    float: left;
+    border-right: 1px solid $docker-lightgrey;
+    ul {
+        padding-left: 0px;
+    }
+    li {
+        list-style: none;
+        a {
+            display: block;
+            padding: 12px 26px;
+            text-decoration: none;
+            color: $docker-lightgrey;
+            border-left: 2px solid white;
+            &:hover,
+            &.active {
+                color: $docker-blue;
+                border-left: 2px solid $docker-blue;
+            }
+        }
+      /*  a.active {
+            color: $docker-blue;
+            border-left: 2px solid $docker-blue;
+        }*/
+    }
+}
