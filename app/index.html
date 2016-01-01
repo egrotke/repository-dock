@@ -18,19 +18,21 @@
     <!-- endbuild -->
 </head>
 
-<body ng-app="repoApp">
+<body ng-app="repoApp" ng-cloak>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div id="wrapper">
         <!-- Sidebar -->
-        <sidebar id="sidebar-wrapper">
+        <sidebar id="sidebar-wrapper" ng-controller='sidebarCtrl'>
             <ul class="sidebar-nav">
-                <li><a href=""><i class="icon-dashboard"></i></a></li>
+                <li><a href="#/dashboard"><i class="icon-dashboard"></i></a></li>
                 <li><a href="" class="active"><i class="icon-align-justify"></i></a></li>
                 <li><a href=""><i class="icon-building"></i></a></li>
-                <li><a href=""><i class="icon-user"></i></a></li>
-                <li><a href=""><i class="icon-gear"></i></a></li>
+                <li><a href="#/profile"><i class="icon-user"></i></a></li>
+                <li class="settings"><a href=""><i class="icon-gear"></i>
+                    <span class="notifications">{{n}}</span>
+                    </a></li>
                 <li><a href=""><i class="icon-align-left"></i></a></li>
             </ul>
         </sidebar>

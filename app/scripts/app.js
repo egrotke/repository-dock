@@ -6,15 +6,18 @@ var repoApp = angular.module('repoApp', [
     'repoControllers'
 ]);
 
-repoApp.config(['$routeProvider', '$locationProvider',
+repoApp.config(['$routeProvider', '$locationProvider', 
     function($routeProvider, $locationProvider) {
         $routeProvider.
         when('/', {
             templateUrl: 'views/main.html',
             controller: 'MainCtrl'
-        }).when('/show', {
-            templateUrl: 'views/show.html',
-            controller: 'ShowCtrl'
+        }).when('/dashboard', {
+            templateUrl: 'views/dashboard.html',
+            controller: 'DashboardCtrl'
+        }).when('/profile', {
+            templateUrl: 'views/profile.html',
+            controller: 'ProfileCtrl'
         });
         $locationProvider.html5Mode(false).hashPrefix('!');
     }

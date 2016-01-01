@@ -1,5 +1,5 @@
 <div class="controls row">
-    <div class="col-xs-6 left-column">
+    <!-- <div class="col-xs-4 left-column">
         <form name="filterForm">
             <label for="singleSelect"> Filter by: </label>
             <select name="filterSelect" ng-model="accountFilter" ng-change="newFilter()">
@@ -9,39 +9,75 @@
                 </option>
             </select>
         </form>
-        <!-- <div class="dropdown">
-                        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">All accounts
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a ng-model="search.docker" href="#">Docker</a></li>
-                            <li><a href="#">Acme</a></li>
-                            <li><a href="#">awesome-org-right-here</a></li>
-                        </ul>
-                    </div> -->
+    </div> -->
+    <div class="col-xs-6 left-column">
+        <div class="dropdown">
+            <label for="singleSelect"> Filter by: </label>
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">{{accountFilter || "All accounts"}}
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a ng-click="switchFilter('All accounts')">All accounts</a></li>
+                <li ng-repeat="item in accounts">
+                    <a ng-click="switchFilter(item)">{{item}}</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="col-xs-6 right-column">
-        <button class="btn btn-sm btn-blue">New repository</button>
+        <button class="btn btn-sm btn-blue" data-toggle="modal" data-target="#newRepoModal">New repository</button>
     </div>
 </div>
-
 <section class="articles">
     <article ng-repeat="item in filteredRepos = (repos | filter:{account:accountFilter}) | startFrom:(currentPage-1)*maxItemsPerPage | limitTo:maxItemsPerPage" class="repo">
         <span class="account-and-name">{{item.account}}/<span class="title">{{item.title}}</span>
-        <button ng-show="{{item.isPrivate}}" class="btn btn-default btn-xs btn-private">private</button>
+        <span ng-show="{{item.isPrivate}}" class="btn-private">private</span>
         </span>
         <p>{{item.description}}</p>
     </article>
 </section>
-
 <div id="pager">
     <ul class="pagination pagination-sm">
         <li>
             <a ng-click="decrementCurrentPage()">
-              <span class="glyphicon glyphicon-menu-left"></span>
+                <span class="glyphicon glyphicon-menu-left"></span>
             </a>
         </li>
         <li ng-repeat="i in getNumberArray(numberOfPages()) track by $index"><a ng-class="{active: currentPage==$index+1}" ng-click="updatePageNumber($index)">{{$index+1}}</a></li>
-        <li><a ng-click="incrementCurrentPage()">
-        <span class="glyphicon glyphicon-menu-right"></span></a></li>
+        <li>
+            <a ng-click="incrementCurrentPage()">
+                <span class="glyphicon glyphicon-menu-right"></span></a>
+        </li>
     </ul>
 </div>
+<modal id="newRepoModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">New Repository</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="account">Account:</label>
+                        <input type="text" class="form-control" id="account">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <input type="text" class="form-control" id="description">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</modal>

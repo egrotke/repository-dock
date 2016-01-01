@@ -9,16 +9,35 @@
 .btn-private {
   border: 1px solid #ffcf99;
   color: #ffcf99;
+  padding: 0px 4px 2px 4px;
+  margin-left: 5px;
+  font-size: 1rem;
+}
+
+/* line 23, ../../app/styles/main.scss */
+.settings {
+  position: relative;
+}
+/* line 25, ../../app/styles/main.scss */
+.settings .notifications {
+  background: red;
+  color: white;
+  position: absolute;
+  margin-top: -19px;
+  margin-left: 7px;
+  font-size: .75rem;
+  border-radius: 50%;
+  padding: 0 3px;
 }
 
 /*End Components*/
-/* line 23, ../../app/styles/main.scss */
+/* line 41, ../../app/styles/main.scss */
 body {
   font-size: 1.1rem;
   /*background: $blue;*/
 }
 
-/* line 28, ../../app/styles/main.scss */
+/* line 46, ../../app/styles/main.scss */
 #wrapper {
   background: white;
   margin: 20px auto;
@@ -29,61 +48,71 @@ body {
   border-left: 1px solid black;
 }
 
-/* line 38, ../../app/styles/main.scss */
-.controls {
-  margin: 20px 0;
-  color: #8c9ba4;
-  height: 20px;
-  /*.dropdown {
-      display: inline;
-      button {
-          background: white;
-          color: $grey;
-          padding-left: 10px;
-          padding-right: 10px;
-          font-size: 1.1rem;
-      }
-  }*/
-}
-/* line 53, ../../app/styles/main.scss */
-.controls .dropdown-menu > li > a {
-  font-size: 1rem;
-}
 /* line 56, ../../app/styles/main.scss */
+.controls {
+  padding-bottom: 25px;
+  margin: 20px 0;
+  color: #c4ccd1;
+  height: 20px;
+}
+/* line 61, ../../app/styles/main.scss */
+.controls label {
+  font-weight: 200;
+}
+/* line 64, ../../app/styles/main.scss */
+.controls .dropdown {
+  display: inline;
+}
+/* line 66, ../../app/styles/main.scss */
+.controls .dropdown button {
+  border-radius: 2px;
+  background: white;
+  color: #c4ccd1;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1.1rem;
+}
+/* line 76, ../../app/styles/main.scss */
+.controls .dropdown-menu > li > a {
+  color: #c4ccd1;
+  font-size: 1rem;
+  cursor: pointer;
+}
+/* line 81, ../../app/styles/main.scss */
 .controls .left-column {
   padding-left: 0;
 }
-/* line 58, ../../app/styles/main.scss */
+/* line 83, ../../app/styles/main.scss */
 .controls .left-column label {
   margin-right: 5px;
 }
-/* line 62, ../../app/styles/main.scss */
+/* line 87, ../../app/styles/main.scss */
 .controls .right-column {
   text-align: right;
   padding-right: 0;
 }
-/* line 65, ../../app/styles/main.scss */
+/* line 90, ../../app/styles/main.scss */
 .controls .right-column button {
   font-size: 1.1rem;
 }
 
-/* line 71, ../../app/styles/main.scss */
+/* line 96, ../../app/styles/main.scss */
 .repos {
   color: #566c7a;
 }
 
-/* line 75, ../../app/styles/main.scss */
+/* line 100, ../../app/styles/main.scss */
 #page-content-wrapper {
   min-height: 600px;
   margin-left: 100px;
   margin-right: 50px;
 }
-/* line 79, ../../app/styles/main.scss */
+/* line 104, ../../app/styles/main.scss */
 #page-content-wrapper #pager {
   text-align: center;
   margin-bottom: 50px;
 }
-/* line 82, ../../app/styles/main.scss */
+/* line 107, ../../app/styles/main.scss */
 #page-content-wrapper #pager .pagination > li > a {
   cursor: pointer;
   background: #dde0e2;
@@ -92,31 +121,37 @@ body {
   padding: 1px 5px;
   font-size: 1rem;
 }
-/* line 89, ../../app/styles/main.scss */
+/* line 114, ../../app/styles/main.scss */
 #page-content-wrapper #pager .pagination > li > a:hover, #page-content-wrapper #pager .pagination > li > a.active {
   color: white;
   background: #23b9e7;
 }
-/* line 96, ../../app/styles/main.scss */
+/* line 121, ../../app/styles/main.scss */
 #page-content-wrapper .articles {
   min-height: 525px;
 }
-/* line 99, ../../app/styles/main.scss */
+/* line 124, ../../app/styles/main.scss */
 #page-content-wrapper article {
-  border-top: 1px solid #c4ccd1;
+  border-bottom: 1px solid #dde0e2;
   padding: 10px 0;
 }
-/* line 102, ../../app/styles/main.scss */
-#page-content-wrapper article .title {
-  font-weight: bold;
+/* line 126, ../../app/styles/main.scss */
+#page-content-wrapper article:first-child {
+  border-top: 1px solid #dde0e2;
 }
-/* line 105, ../../app/styles/main.scss */
+/* line 130, ../../app/styles/main.scss */
+#page-content-wrapper article .title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #566c7a;
+}
+/* line 135, ../../app/styles/main.scss */
 #page-content-wrapper article p {
   color: #c4ccd1;
   margin-bottom: 0;
   font-size: 1rem;
 }
-/* line 110, ../../app/styles/main.scss */
+/* line 140, ../../app/styles/main.scss */
 #page-content-wrapper article button {
   margin-left: 5px;
   height: 14px;
@@ -125,23 +160,23 @@ body {
   padding-bottom: 14px;
 }
 
-/* line 120, ../../app/styles/main.scss */
+/* line 150, ../../app/styles/main.scss */
 #sidebar-wrapper {
   padding-top: 10px;
   min-height: 620px;
   width: 65px;
   float: left;
-  border-right: 1px solid #c4ccd1;
+  border-right: 1px solid #dde0e2;
 }
-/* line 126, ../../app/styles/main.scss */
+/* line 156, ../../app/styles/main.scss */
 #sidebar-wrapper ul {
   padding-left: 0px;
 }
-/* line 129, ../../app/styles/main.scss */
+/* line 159, ../../app/styles/main.scss */
 #sidebar-wrapper li {
   list-style: none;
 }
-/* line 131, ../../app/styles/main.scss */
+/* line 161, ../../app/styles/main.scss */
 #sidebar-wrapper li a {
   display: block;
   padding: 12px 26px;
@@ -149,12 +184,12 @@ body {
   color: #c4ccd1;
   border-left: 2px solid white;
 }
-/* line 137, ../../app/styles/main.scss */
+/* line 167, ../../app/styles/main.scss */
 #sidebar-wrapper li a:hover, #sidebar-wrapper li a.active {
   color: #23b9e7;
   border-left: 2px solid #23b9e7;
 }
-/* line 142, ../../app/styles/main.scss */
+/* line 172, ../../app/styles/main.scss */
 #sidebar-wrapper li a i {
   font-size: 1.2rem;
 }

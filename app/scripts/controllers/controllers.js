@@ -4,16 +4,22 @@
 var repoControllers =
     angular.module('repoControllers', []);
 
-repoControllers.controller('MainCtrl', ['$scope', '$http', '$filter',
-    function MainCtrl($scope, $http, $filter) {
+repoControllers.controller('sidebarCtrl', ['$scope',
+    function sidebarCtrl($scope) {
+        $scope.n = 4;
+    }
+]);
+
+repoControllers.controller('MainCtrl', ['$scope', '$http',
+    function MainCtrl($scope, $http) {
         $scope.accountFilter = "";
         $scope.accounts = [];
         $scope.currentPage = 1;
         $scope.maxItemsPerPage = 8;
         $scope.numberOfPages = function() {
-            if($scope.filteredRepos){
-               return Math.ceil($scope.filteredRepos.length / $scope.maxItemsPerPage);
-           } 
+            if ($scope.filteredRepos) {
+                return Math.ceil($scope.filteredRepos.length / $scope.maxItemsPerPage);
+            }
         };
         $scope.newFilter = function() {
             $scope.currentPage = 1;
@@ -41,6 +47,25 @@ repoControllers.controller('MainCtrl', ['$scope', '$http', '$filter',
             });
         });
 
+        // Alternate dropdown
+        $scope.switchFilter = function(newFilter) {
+            $scope.currentPage = 1;
+            $scope.accountFilter = (newFilter === "All accounts") ? "" : newFilter;
+        };
+
+
     }
 ]);
 
+
+repoControllers.controller('DashboardCtrl', ['$scope',
+    function DashboardCtrl($scope) {
+        $scope.title = "Dashboard";
+    }
+]);
+
+repoControllers.controller('ProfileCtrl', ['$scope',
+    function ProfileCtrl($scope) {
+        $scope.title = "Profile";
+    }
+]);
