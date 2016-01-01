@@ -85,33 +85,38 @@ body {
 }
 /* line 82, ../../app/styles/main.scss */
 #page-content-wrapper #pager .pagination > li > a {
+  cursor: pointer;
   background: #dde0e2;
   color: #8c9ba4;
   margin: 2px;
   padding: 1px 5px;
   font-size: 1rem;
 }
-/* line 88, ../../app/styles/main.scss */
+/* line 89, ../../app/styles/main.scss */
 #page-content-wrapper #pager .pagination > li > a:hover, #page-content-wrapper #pager .pagination > li > a.active {
   color: white;
   background: #23b9e7;
 }
-/* line 95, ../../app/styles/main.scss */
+/* line 96, ../../app/styles/main.scss */
+#page-content-wrapper .articles {
+  min-height: 525px;
+}
+/* line 99, ../../app/styles/main.scss */
 #page-content-wrapper article {
   border-top: 1px solid #c4ccd1;
   padding: 10px 0;
 }
-/* line 98, ../../app/styles/main.scss */
+/* line 102, ../../app/styles/main.scss */
 #page-content-wrapper article .title {
   font-weight: bold;
 }
-/* line 101, ../../app/styles/main.scss */
+/* line 105, ../../app/styles/main.scss */
 #page-content-wrapper article p {
   color: #c4ccd1;
   margin-bottom: 0;
   font-size: 1rem;
 }
-/* line 106, ../../app/styles/main.scss */
+/* line 110, ../../app/styles/main.scss */
 #page-content-wrapper article button {
   margin-left: 5px;
   height: 14px;
@@ -120,7 +125,7 @@ body {
   padding-bottom: 14px;
 }
 
-/* line 116, ../../app/styles/main.scss */
+/* line 120, ../../app/styles/main.scss */
 #sidebar-wrapper {
   padding-top: 10px;
   min-height: 620px;
@@ -128,19 +133,15 @@ body {
   float: left;
   border-right: 1px solid #c4ccd1;
 }
-/* line 122, ../../app/styles/main.scss */
+/* line 126, ../../app/styles/main.scss */
 #sidebar-wrapper ul {
   padding-left: 0px;
 }
-/* line 125, ../../app/styles/main.scss */
+/* line 129, ../../app/styles/main.scss */
 #sidebar-wrapper li {
   list-style: none;
-  /*  a.active {
-      color: $blue;
-      border-left: 2px solid $blue;
-  }*/
 }
-/* line 127, ../../app/styles/main.scss */
+/* line 131, ../../app/styles/main.scss */
 #sidebar-wrapper li a {
   display: block;
   padding: 12px 26px;
@@ -148,12 +149,12 @@ body {
   color: #c4ccd1;
   border-left: 2px solid white;
 }
-/* line 133, ../../app/styles/main.scss */
+/* line 137, ../../app/styles/main.scss */
 #sidebar-wrapper li a:hover, #sidebar-wrapper li a.active {
   color: #23b9e7;
   border-left: 2px solid #23b9e7;
 }
-/* line 138, ../../app/styles/main.scss */
+/* line 142, ../../app/styles/main.scss */
 #sidebar-wrapper li a i {
   font-size: 1.2rem;
 }
