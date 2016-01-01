@@ -1,43 +1,44 @@
-  <!-- {{repos}} -->
-<div ng-repeat="item in repos">
-  <article class="repo">
-    <span class="account-and-name">{{item.account}}/
-    <span class="title">{{item.title}}</span>
-       <button class="btn btn-default btn-xs btn-private">{{item.isPrivate}}</button>
+<div class="controls row">
+    <div class="col-xs-6 left-column">
+        <form name="filterForm">
+            <label for="singleSelect"> Filter by: </label>
+            <select name="filterSelect" ng-model="accountFilter">
+                <option value="">all accounts</option>
+                <option ng-repeat="item in accounts" value="{{item}}">
+                    {{item}}
+                </option>
+            </select>
+        </form>
+        <!-- <div class="dropdown">
+                        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">All accounts
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a ng-model="search.docker" href="#">Docker</a></li>
+                            <li><a href="#">Acme</a></li>
+                            <li><a href="#">awesome-org-right-here</a></li>
+                        </ul>
+                    </div> -->
+    </div>
+    <div class="col-xs-6 right-column">
+        <button class="btn btn-sm btn-blue">New repository</button>
+    </div>
+</div>
+<article ng-repeat="item in repos | filter:{account:accountFilter} | startFrom:(currentPage-1)*maxItemsPerPage | limitTo:maxItemsPerPage" class="repo">
+    <span class="account-and-name">{{item.account}}/<span class="title">{{item.title}}</span>
+    <button  ng-show="{{item.isPrivate}}" class="btn btn-default btn-xs btn-private">private</button>
     </span>
     <p>{{item.description}}</p>
-  </article>
+</article>
+ <!-- | startFrom:currentPage*maxItemsPerPage  -->
+ {{startFrom}}
+<div id="pager">
+    <ul class="pagination pagination-sm">
+        <li>
+            <a ng-click="decrementCurrentPage()">
+                <</a>
+        </li>
+        <li ng-repeat="i in getNumberArray(3) track by $index"><a ng-class="{active: currentPage==$index+1}" ng-click="updatePageNumber($index)">{{$index+1}}</a></li>
+
+        <li><a ng-click="incrementCurrentPage()">></a></li>
+    </ul>
 </div>
-<!-- <article class="repo">
-    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
-       <button class="btn btn-default btn-xs btn-private">private</button>
-    </span>
-    <p>This is the description, not the README, of this wonderful repo.</p>
-  </article>
-  <article class="repo">
-    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
-       <button class="btn btn-default btn-xs btn-private">private</button>
-    </span>
-    <p>This is the description, not the README, of this wonderful repo.</p>
-  </article>
-
-  <article class="repo">
-    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
-       <button class="btn btn-default btn-xs btn-private">private</button>
-    </span>
-    <p>This is the description, not the README, of this wonderful repo.</p>
-  </article>
-
-  <article class="repo">
-    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
-       <button class="btn btn-default btn-xs btn-private">private</button>
-    </span>
-    <p>This is the description, not the README, of this wonderful repo.</p>
-  </article>
-
-  <article class="repo">
-    <span class="account-and-name">docker/<span class="title">a-cool-repo</span>
-       <button class="btn btn-default btn-xs btn-private">private</button>
-    </span>
-    <p>This is the description, not the README, of this wonderful repo.</p>
-  </article> -->

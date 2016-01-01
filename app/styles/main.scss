@@ -30,6 +30,7 @@ body {
     margin: 20px auto;
     max-width: 1000px;
     border-top: 1px solid $blue;
+    border-bottom: 1px solid $blue;
     border-right: 1px solid black;
     border-left: 1px solid black;
 }
@@ -38,7 +39,7 @@ body {
     margin: 20px 0;
     color: $grey;
     height: 20px;
-    .dropdown {
+    /*.dropdown {
         display: inline;
         button {
             background: white;
@@ -47,12 +48,16 @@ body {
             padding-right: 10px;
             font-size: 1.1rem;
         }
-    }
+    }*/
+
     .dropdown-menu>li>a{
       font-size: 1rem;
     }
     .left-column{
       padding-left: 0;
+      label{
+        margin-right: 5px;
+      }
     }
     .right-column {
         text-align: right;
@@ -64,11 +69,11 @@ body {
 }
 
 .repos {
-    height: 450px;
     color: $bluegrey;
 }
 
 #page-content-wrapper {
+    min-height:600px;
     margin-left: 100px;
     margin-right: 50px;
     #pager {
@@ -110,7 +115,7 @@ body {
 
 #sidebar-wrapper {
     padding-top: 10px;
-    height: 605px;
+    min-height: 620px;
     width: 65px;
     float: left;
     border-right: 1px solid $lightgrey;
@@ -120,11 +125,6 @@ body {
     li {
         list-style: none;
         a {
-            -webkit-transition: .25s all ease;
-            -moz-transition: .25s all ease;
-            -ms-transition: .25s all ease;
-            -o-transition: .25s all ease;
-            transition: .25s all ease;
             display: block;
             padding: 12px 26px;
             text-decoration: none;

@@ -18,3 +18,13 @@ repoApp.config(['$routeProvider', '$locationProvider',
 });
 $locationProvider.html5Mode(false).hashPrefix('!');
 }]);
+
+repoApp.filter('startFrom', function() {
+    return function(input, start) {
+        start = +start; //parse to int
+        if(input){
+          console.log("Start from: " + start);
+          return input.slice(start);
+        }
+    };
+});
