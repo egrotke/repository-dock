@@ -3,6 +3,7 @@ $bg-grey: #dde0e2;
 $bluegrey: #566c7a;
 $grey: #8c9ba4;
 $blue: #23b9e7;
+$lightblue: #f4f9fb;
 $orange: #ffcf99;
 
 /*Components*/
@@ -20,8 +21,17 @@ $orange: #ffcf99;
     font-size: 1rem;
 }
 
+.modal-body .dropdown {
+    button {
+        text-align: left;
+    }
+    .dropdown-menu>li>a {
+        cursor: pointer;
+    }
+}
+
 .settings {
-    position:relative;
+    position: relative;
     .notifications {
         background: red;
         color: white;
@@ -40,7 +50,7 @@ $orange: #ffcf99;
 
 body {
     font-size: 1.1rem;
-    /*background: $blue;*/
+    background: $lightblue;
 }
 
 #wrapper {
@@ -51,6 +61,7 @@ body {
     border-bottom: 1px solid $blue;
     border-right: 1px solid black;
     border-left: 1px solid black;
+    /*border:1px solid $bluegrey;*/
 }
 
 .controls {
@@ -58,14 +69,14 @@ body {
     margin: 20px 0;
     color: $lightgrey;
     height: 20px;
-    label{
+    label {
         font-weight: 200;
     }
     .dropdown {
         display: inline;
         button {
             -webkit-border-radius: 2px;
-                    border-radius: 2px;
+            border-radius: 2px;
             background: white;
             color: $lightgrey;
             padding-left: 10px;
@@ -74,7 +85,7 @@ body {
         }
     }
     .dropdown-menu>li>a {
-    color: $lightgrey;
+        color: $lightgrey;
         font-size: 1rem;
         cursor: pointer;
     }
@@ -122,6 +133,15 @@ body {
         min-height: 525px;
     }
     article {
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+        &.new-repo {
+            background: $blue;
+            color: white;
+        }
         border-bottom: 1px solid $bg-grey;
         &:first-child {
             border-top: 1px solid $bg-grey;
@@ -130,7 +150,7 @@ body {
         .title {
             font-weight: 600;
             font-size: 1.2rem;
-            color:$bluegrey;
+            color: $bluegrey;
         }
         p {
             color: $lightgrey;

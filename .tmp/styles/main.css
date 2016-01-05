@@ -1,11 +1,11 @@
 /*Components*/
-/* line 10, ../../app/styles/main.scss */
+/* line 11, ../../app/styles/main.scss */
 .btn-blue {
   background: #23b9e7;
   color: white;
 }
 
-/* line 15, ../../app/styles/main.scss */
+/* line 16, ../../app/styles/main.scss */
 .btn-private {
   border: 1px solid #ffcf99;
   color: #ffcf99;
@@ -14,11 +14,20 @@
   font-size: 1rem;
 }
 
-/* line 23, ../../app/styles/main.scss */
+/* line 25, ../../app/styles/main.scss */
+.modal-body .dropdown button {
+  text-align: left;
+}
+/* line 28, ../../app/styles/main.scss */
+.modal-body .dropdown .dropdown-menu > li > a {
+  cursor: pointer;
+}
+
+/* line 33, ../../app/styles/main.scss */
 .settings {
   position: relative;
 }
-/* line 25, ../../app/styles/main.scss */
+/* line 35, ../../app/styles/main.scss */
 .settings .notifications {
   background: red;
   color: white;
@@ -31,13 +40,13 @@
 }
 
 /*End Components*/
-/* line 41, ../../app/styles/main.scss */
+/* line 51, ../../app/styles/main.scss */
 body {
   font-size: 1.1rem;
-  /*background: $blue;*/
+  background: #f4f9fb;
 }
 
-/* line 46, ../../app/styles/main.scss */
+/* line 56, ../../app/styles/main.scss */
 #wrapper {
   background: white;
   margin: 20px auto;
@@ -46,24 +55,25 @@ body {
   border-bottom: 1px solid #23b9e7;
   border-right: 1px solid black;
   border-left: 1px solid black;
+  /*border:1px solid $bluegrey;*/
 }
 
-/* line 56, ../../app/styles/main.scss */
+/* line 67, ../../app/styles/main.scss */
 .controls {
   padding-bottom: 25px;
   margin: 20px 0;
   color: #c4ccd1;
   height: 20px;
 }
-/* line 61, ../../app/styles/main.scss */
+/* line 72, ../../app/styles/main.scss */
 .controls label {
   font-weight: 200;
 }
-/* line 64, ../../app/styles/main.scss */
+/* line 75, ../../app/styles/main.scss */
 .controls .dropdown {
   display: inline;
 }
-/* line 66, ../../app/styles/main.scss */
+/* line 77, ../../app/styles/main.scss */
 .controls .dropdown button {
   border-radius: 2px;
   background: white;
@@ -72,47 +82,47 @@ body {
   padding-right: 10px;
   font-size: 1.1rem;
 }
-/* line 76, ../../app/styles/main.scss */
+/* line 87, ../../app/styles/main.scss */
 .controls .dropdown-menu > li > a {
   color: #c4ccd1;
   font-size: 1rem;
   cursor: pointer;
 }
-/* line 81, ../../app/styles/main.scss */
+/* line 92, ../../app/styles/main.scss */
 .controls .left-column {
   padding-left: 0;
 }
-/* line 83, ../../app/styles/main.scss */
+/* line 94, ../../app/styles/main.scss */
 .controls .left-column label {
   margin-right: 5px;
 }
-/* line 87, ../../app/styles/main.scss */
+/* line 98, ../../app/styles/main.scss */
 .controls .right-column {
   text-align: right;
   padding-right: 0;
 }
-/* line 90, ../../app/styles/main.scss */
+/* line 101, ../../app/styles/main.scss */
 .controls .right-column button {
   font-size: 1.1rem;
 }
 
-/* line 96, ../../app/styles/main.scss */
+/* line 107, ../../app/styles/main.scss */
 .repos {
   color: #566c7a;
 }
 
-/* line 100, ../../app/styles/main.scss */
+/* line 111, ../../app/styles/main.scss */
 #page-content-wrapper {
   min-height: 600px;
   margin-left: 100px;
   margin-right: 50px;
 }
-/* line 104, ../../app/styles/main.scss */
+/* line 115, ../../app/styles/main.scss */
 #page-content-wrapper #pager {
   text-align: center;
   margin-bottom: 50px;
 }
-/* line 107, ../../app/styles/main.scss */
+/* line 118, ../../app/styles/main.scss */
 #page-content-wrapper #pager .pagination > li > a {
   cursor: pointer;
   background: #dde0e2;
@@ -121,37 +131,43 @@ body {
   padding: 1px 5px;
   font-size: 1rem;
 }
-/* line 114, ../../app/styles/main.scss */
+/* line 125, ../../app/styles/main.scss */
 #page-content-wrapper #pager .pagination > li > a:hover, #page-content-wrapper #pager .pagination > li > a.active {
   color: white;
   background: #23b9e7;
 }
-/* line 121, ../../app/styles/main.scss */
+/* line 132, ../../app/styles/main.scss */
 #page-content-wrapper .articles {
   min-height: 525px;
 }
-/* line 124, ../../app/styles/main.scss */
+/* line 135, ../../app/styles/main.scss */
 #page-content-wrapper article {
+  transition: all .5s ease;
   border-bottom: 1px solid #dde0e2;
   padding: 10px 0;
 }
-/* line 126, ../../app/styles/main.scss */
+/* line 141, ../../app/styles/main.scss */
+#page-content-wrapper article.new-repo {
+  background: #23b9e7;
+  color: white;
+}
+/* line 146, ../../app/styles/main.scss */
 #page-content-wrapper article:first-child {
   border-top: 1px solid #dde0e2;
 }
-/* line 130, ../../app/styles/main.scss */
+/* line 150, ../../app/styles/main.scss */
 #page-content-wrapper article .title {
   font-weight: 600;
   font-size: 1.2rem;
   color: #566c7a;
 }
-/* line 135, ../../app/styles/main.scss */
+/* line 155, ../../app/styles/main.scss */
 #page-content-wrapper article p {
   color: #c4ccd1;
   margin-bottom: 0;
   font-size: 1rem;
 }
-/* line 140, ../../app/styles/main.scss */
+/* line 160, ../../app/styles/main.scss */
 #page-content-wrapper article button {
   margin-left: 5px;
   height: 14px;
@@ -160,7 +176,7 @@ body {
   padding-bottom: 14px;
 }
 
-/* line 150, ../../app/styles/main.scss */
+/* line 170, ../../app/styles/main.scss */
 #sidebar-wrapper {
   padding-top: 10px;
   min-height: 620px;
@@ -168,15 +184,15 @@ body {
   float: left;
   border-right: 1px solid #dde0e2;
 }
-/* line 156, ../../app/styles/main.scss */
+/* line 176, ../../app/styles/main.scss */
 #sidebar-wrapper ul {
   padding-left: 0px;
 }
-/* line 159, ../../app/styles/main.scss */
+/* line 179, ../../app/styles/main.scss */
 #sidebar-wrapper li {
   list-style: none;
 }
-/* line 161, ../../app/styles/main.scss */
+/* line 181, ../../app/styles/main.scss */
 #sidebar-wrapper li a {
   display: block;
   padding: 12px 26px;
@@ -184,12 +200,12 @@ body {
   color: #c4ccd1;
   border-left: 2px solid white;
 }
-/* line 167, ../../app/styles/main.scss */
+/* line 187, ../../app/styles/main.scss */
 #sidebar-wrapper li a:hover, #sidebar-wrapper li a.active {
   color: #23b9e7;
   border-left: 2px solid #23b9e7;
 }
-/* line 172, ../../app/styles/main.scss */
+/* line 192, ../../app/styles/main.scss */
 #sidebar-wrapper li a i {
   font-size: 1.2rem;
 }

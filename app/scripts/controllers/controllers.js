@@ -5,8 +5,13 @@ var repoControllers =
     angular.module('repoControllers', []);
 
 repoControllers.controller('sidebarCtrl', ['$scope',
+
     function sidebarCtrl($scope) {
         $scope.n = 4;
+        $scope.selectedNav = "repos";
+        $scope.navSelected = function(link) {
+            $scope.selectedNav = link;
+        };
     }
 ]);
 
@@ -16,10 +21,31 @@ repoControllers.controller('MainCtrl', ['$scope', '$http',
         $scope.accounts = [];
         $scope.currentPage = 1;
         $scope.maxItemsPerPage = 8;
+        $scope.repoAccount = "";
+        // $scope.repo = {};
+        $scope.selectRepoAccount = function(account) {
+            $scope.repoAccount = account;
+            // console.log("$scope.repo.account: " + $scope.repo.account);
+        };
         $scope.numberOfPages = function() {
             if ($scope.filteredRepos) {
                 return Math.ceil($scope.filteredRepos.length / $scope.maxItemsPerPage);
             }
+        };
+        $scope.addRepo = function(newRepo) {
+        	var $newRepo;
+            $scope.repos.unshift(newRepo);
+            $("#newRepoModal").modal('hide');
+
+            $newRepo = $("#page-content-wrapper article:first-child");
+            $newRepo.addClass('new-repo');
+               setTimeout(function() {
+               $newRepo.removeClass('new-repo');
+            }, 500);
+        };
+        $scope.showModal = false;
+        $scope.toggleModal = function() {
+            $scope.showModal = !$scope.showModal;
         };
         $scope.newFilter = function() {
             $scope.currentPage = 1;
@@ -67,5 +93,17 @@ repoControllers.controller('DashboardCtrl', ['$scope',
 repoControllers.controller('ProfileCtrl', ['$scope',
     function ProfileCtrl($scope) {
         $scope.title = "Profile";
+    }
+]);
+
+repoControllers.controller('SettingsCtrl', ['$scope',
+    function SettingsCtrl($scope) {
+        $scope.title = "Settings";
+    }
+]);
+
+repoControllers.controller('BuildsCtrl', ['$scope',
+    function BuildsCtrl($scope) {
+        $scope.title = "Builds";
     }
 ]);
