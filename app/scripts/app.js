@@ -6,6 +6,39 @@ var repoApp = angular.module('repoApp', [
     'repoControllers'
 ]);
 
+// repoApp.service('repoService', function($http) {
+//     var repos;
+
+//     $http.get('json/repos.json').success(function(data) {
+//         repos = data.repos;
+
+//         // repos.forEach(function(item) {
+//         //     if ($scope.accounts.indexOf(item.account) === -1) {
+//         //         $scope.accounts.push(item.account);
+//         //     }
+//         // });
+//     });
+
+//     return repos;
+// });
+
+repoApp.factory('repoService', function($http) {
+  var repoService = {
+    async: function() {
+      // $http returns a promise, which has a then function, which also returns a promise
+      var promise = $http.get('../json/repos.json').then(function (response) {
+        // The then function here is an opportunity to modify the response
+        console.log(response);
+        // The return value gets picked up by the then in the controller.
+        return response.data;
+      });
+      // Return the promise to the controller
+      return promise;
+    }
+  };
+  return repoService;
+});
+
 repoApp.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
         $routeProvider.
@@ -24,7 +57,13 @@ repoApp.config(['$routeProvider', '$locationProvider',
         }).when('/settings', {
             templateUrl: 'views/settings.html',
             controller: 'SettingsCtrl'
-        });
+        }).when('/repo/:id', {
+            templateUrl: '../views/repo.html',
+            controller: 'RepoCtrl'
+        }).otherwise({
+            redirectTo: '/404'
+        });;
+
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false

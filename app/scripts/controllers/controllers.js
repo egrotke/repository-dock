@@ -33,15 +33,22 @@ repoControllers.controller('MainCtrl', ['$scope', '$http',
             }
         };
         $scope.addRepo = function(newRepo) {
-        	var $newRepo;
+            var $newRepo;
             $scope.repos.unshift(newRepo);
-            $("#newRepoModal").modal('hide');
+            $("#newRepoModal").modal('hide').on('hidden.bs.modal', function() {
+                $(this).find('form')[0].reset();
+            });
 
             $newRepo = $("#page-content-wrapper article:first-child");
             $newRepo.addClass('new-repo');
-               setTimeout(function() {
-               $newRepo.removeClass('new-repo');
+            setTimeout(function() {
+                $newRepo.removeClass('new-repo');
+                $scope.repo.title = "";
+                $scope.repo.description = "";
+                $scope.newRepoForm.$setPristine(true);
+                $scope.repo = "";
             }, 500);
+
         };
         $scope.showModal = false;
         $scope.toggleModal = function() {
@@ -79,6 +86,17 @@ repoControllers.controller('MainCtrl', ['$scope', '$http',
             $scope.accountFilter = (newFilter === "All accounts") ? "" : newFilter;
         };
 
+
+    }
+]);
+
+repoControllers.controller('RepoCtrl', ['repoService', '$scope', '$routeParams',
+    function RepoCtrl(repoService, $scope, $routeParams) {
+        var id = $scope.id = $routeParams.id;
+        repoService.async().then(function(d) {
+            $scope.repos = d.repos;
+            $scope.item = $scope.repos[id];
+        });
 
     }
 ]);

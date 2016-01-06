@@ -19,10 +19,10 @@
 </div>
 <section class="articles">
     <article ng-repeat="item in filteredRepos = (repos | filter:{account:accountFilter}) | startFrom:(currentPage-1)*maxItemsPerPage | limitTo:maxItemsPerPage track by $index" class="repo">
-        <span class="account-and-name">{{item.account}}/<span class="title">{{item.title}}</span>
+        <a href="/repo/{{item.id}}"><span class="account-and-name">{{item.account}}/<span class="title">{{item.title}}</span>
         <span ng-show="{{item.isPrivate}}" class="btn-private">private</span>
         </span>
-        <p>{{item.description}}</p>
+        <p>{{item.description}}</p></a>
     </article>
 </section>
 <div id="pager">
@@ -40,7 +40,7 @@
     </ul>
 </div>
 <modal id="newRepoModal" class="modal fade" role="dialog" visible="showModal" title="New Repository">
-    <form role="form">
+    <form role="form" name="newRepoForm">
         <div class="form-group">
             <label for="account">Account:</label>
             <select class="form-control" ng-change="selectRepoAccount(item)" ng-model="repo.account">
