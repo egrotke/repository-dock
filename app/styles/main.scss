@@ -157,6 +157,11 @@ body {
             margin-bottom: 0;
             font-size: 1rem;
         }
+        a:hover{
+            text-decoration:none;
+            background: $lightblue;
+            border-bottom: 1px solid $blue;
+        }
         button {
             margin-left: 5px;
             height: 14px;

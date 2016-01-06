@@ -15,14 +15,26 @@ repoControllers.controller('sidebarCtrl', ['$scope',
     }
 ]);
 
-repoControllers.controller('MainCtrl', ['$scope', '$http',
-    function MainCtrl($scope, $http) {
-        $scope.accountFilter = "";
+repoControllers.controller('MainCtrl', ['repoService', '$scope',
+    function MainCtrl(repoService, $scope) {
         $scope.accounts = [];
+
+        repoService.async().then(function(d) {
+            $scope.repos = d.repos;
+
+            $scope.repos.forEach(function(item) {
+                if ($scope.accounts.indexOf(item.account) === -1) {
+                    $scope.accounts.push(item.account);
+                }
+            });
+        });
+
+        $scope.accountFilter = "";
         $scope.currentPage = 1;
         $scope.maxItemsPerPage = 8;
         $scope.repoAccount = "";
-        // $scope.repo = {};
+        $scope.form = {};
+
         $scope.selectRepoAccount = function(account) {
             $scope.repoAccount = account;
             // console.log("$scope.repo.account: " + $scope.repo.account);
@@ -32,23 +44,22 @@ repoControllers.controller('MainCtrl', ['$scope', '$http',
                 return Math.ceil($scope.filteredRepos.length / $scope.maxItemsPerPage);
             }
         };
-        $scope.addRepo = function(newRepo) {
-            var $newRepo;
-            $scope.repos.unshift(newRepo);
+        $scope.addRepo = function(formRepo) {
+            var newRepoObj = $.extend({}, formRepo), $newRepo;
+
+            $scope.repos.unshift(newRepoObj);
             $("#newRepoModal").modal('hide').on('hidden.bs.modal', function() {
-                $(this).find('form')[0].reset();
+                $scope.form.newRepoForm.$setPristine(true);
+                // $(this).find('form')[0].reset();
+                $scope.formReset();
             });
 
+            // Animation for new repo
             $newRepo = $("#page-content-wrapper article:first-child");
             $newRepo.addClass('new-repo');
             setTimeout(function() {
                 $newRepo.removeClass('new-repo');
-                $scope.repo.title = "";
-                $scope.repo.description = "";
-                $scope.newRepoForm.$setPristine(true);
-                $scope.repo = "";
             }, 500);
-
         };
         $scope.showModal = false;
         $scope.toggleModal = function() {
@@ -70,17 +81,15 @@ repoControllers.controller('MainCtrl', ['$scope', '$http',
         $scope.updatePageNumber = function(index) {
             $scope.currentPage = index + 1;
         };
-        $http.get('json/repos.json').success(function(data) {
-            $scope.repos = data.repos;
+        $scope.formReset = function() {
+            $scope.form.newRepoForm.$setPristine(true);
+            $scope.form.account = "";
+            $scope.form.title = "";
+            $scope.form.description = "";
+            // console.log("mainCtrl reset");
+        	// console.log($scope.form);
+        };
 
-            $scope.repos.forEach(function(item) {
-                if ($scope.accounts.indexOf(item.account) === -1) {
-                    $scope.accounts.push(item.account);
-                }
-            });
-        });
-
-        // Alternate dropdown
         $scope.switchFilter = function(newFilter) {
             $scope.currentPage = 1;
             $scope.accountFilter = (newFilter === "All accounts") ? "" : newFilter;
@@ -125,3 +134,4 @@ repoControllers.controller('BuildsCtrl', ['$scope',
         $scope.title = "Builds";
     }
 ]);
+

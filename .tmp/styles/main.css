@@ -168,6 +168,12 @@ body {
   font-size: 1rem;
 }
 /* line 160, ../../app/styles/main.scss */
+#page-content-wrapper article a:hover {
+  text-decoration: none;
+  background: #f4f9fb;
+  border-bottom: 1px solid #23b9e7;
+}
+/* line 165, ../../app/styles/main.scss */
 #page-content-wrapper article button {
   margin-left: 5px;
   height: 14px;
@@ -176,7 +182,7 @@ body {
   padding-bottom: 14px;
 }
 
-/* line 170, ../../app/styles/main.scss */
+/* line 175, ../../app/styles/main.scss */
 #sidebar-wrapper {
   padding-top: 10px;
   min-height: 620px;
@@ -184,15 +190,15 @@ body {
   float: left;
   border-right: 1px solid #dde0e2;
 }
-/* line 176, ../../app/styles/main.scss */
+/* line 181, ../../app/styles/main.scss */
 #sidebar-wrapper ul {
   padding-left: 0px;
 }
-/* line 179, ../../app/styles/main.scss */
+/* line 184, ../../app/styles/main.scss */
 #sidebar-wrapper li {
   list-style: none;
 }
-/* line 181, ../../app/styles/main.scss */
+/* line 186, ../../app/styles/main.scss */
 #sidebar-wrapper li a {
   display: block;
   padding: 12px 26px;
@@ -200,12 +206,12 @@ body {
   color: #c4ccd1;
   border-left: 2px solid white;
 }
-/* line 187, ../../app/styles/main.scss */
+/* line 192, ../../app/styles/main.scss */
 #sidebar-wrapper li a:hover, #sidebar-wrapper li a.active {
   color: #23b9e7;
   border-left: 2px solid #23b9e7;
 }
-/* line 192, ../../app/styles/main.scss */
+/* line 197, ../../app/styles/main.scss */
 #sidebar-wrapper li a i {
   font-size: 1.2rem;
 }
