@@ -12,22 +12,16 @@
   padding: 0px 4px 2px 4px;
   margin-left: 5px;
   font-size: 1rem;
+  position: relative;
+  top: -2px;
 }
 
-/* line 25, ../../app/styles/main.scss */
-.modal-body .dropdown button {
-  text-align: left;
-}
-/* line 28, ../../app/styles/main.scss */
-.modal-body .dropdown .dropdown-menu > li > a {
-  cursor: pointer;
-}
-
-/* line 33, ../../app/styles/main.scss */
+/*End Components*/
+/* line 27, ../../app/styles/main.scss */
 .settings {
   position: relative;
 }
-/* line 35, ../../app/styles/main.scss */
+/* line 29, ../../app/styles/main.scss */
 .settings .notifications {
   background: red;
   color: white;
@@ -40,13 +34,13 @@
 }
 
 /*End Components*/
-/* line 51, ../../app/styles/main.scss */
+/* line 45, ../../app/styles/main.scss */
 body {
   font-size: 1.1rem;
   background: #f4f9fb;
 }
 
-/* line 56, ../../app/styles/main.scss */
+/* line 50, ../../app/styles/main.scss */
 #wrapper {
   background: white;
   margin: 20px auto;
@@ -58,22 +52,22 @@ body {
   /*border:1px solid $bluegrey;*/
 }
 
-/* line 67, ../../app/styles/main.scss */
+/* line 61, ../../app/styles/main.scss */
 .controls {
   padding-bottom: 25px;
   margin: 20px 0;
   color: #c4ccd1;
   height: 20px;
 }
-/* line 72, ../../app/styles/main.scss */
+/* line 66, ../../app/styles/main.scss */
 .controls label {
   font-weight: 200;
 }
-/* line 75, ../../app/styles/main.scss */
+/* line 69, ../../app/styles/main.scss */
 .controls .dropdown {
   display: inline;
 }
-/* line 77, ../../app/styles/main.scss */
+/* line 71, ../../app/styles/main.scss */
 .controls .dropdown button {
   border-radius: 2px;
   background: white;
@@ -82,47 +76,47 @@ body {
   padding-right: 10px;
   font-size: 1.1rem;
 }
-/* line 87, ../../app/styles/main.scss */
+/* line 81, ../../app/styles/main.scss */
 .controls .dropdown-menu > li > a {
   color: #c4ccd1;
   font-size: 1rem;
   cursor: pointer;
 }
-/* line 92, ../../app/styles/main.scss */
+/* line 86, ../../app/styles/main.scss */
 .controls .left-column {
   padding-left: 0;
 }
-/* line 94, ../../app/styles/main.scss */
+/* line 88, ../../app/styles/main.scss */
 .controls .left-column label {
   margin-right: 5px;
 }
-/* line 98, ../../app/styles/main.scss */
+/* line 92, ../../app/styles/main.scss */
 .controls .right-column {
   text-align: right;
   padding-right: 0;
 }
-/* line 101, ../../app/styles/main.scss */
+/* line 95, ../../app/styles/main.scss */
 .controls .right-column button {
   font-size: 1.1rem;
 }
 
-/* line 107, ../../app/styles/main.scss */
+/* line 101, ../../app/styles/main.scss */
 .repos {
   color: #566c7a;
 }
 
-/* line 111, ../../app/styles/main.scss */
+/* line 105, ../../app/styles/main.scss */
 #page-content-wrapper {
   min-height: 600px;
   margin-left: 100px;
   margin-right: 50px;
 }
-/* line 115, ../../app/styles/main.scss */
+/* line 109, ../../app/styles/main.scss */
 #page-content-wrapper #pager {
   text-align: center;
   margin-bottom: 50px;
 }
-/* line 118, ../../app/styles/main.scss */
+/* line 112, ../../app/styles/main.scss */
 #page-content-wrapper #pager .pagination > li > a {
   cursor: pointer;
   background: #dde0e2;
@@ -131,49 +125,49 @@ body {
   padding: 1px 5px;
   font-size: 1rem;
 }
-/* line 125, ../../app/styles/main.scss */
+/* line 119, ../../app/styles/main.scss */
 #page-content-wrapper #pager .pagination > li > a:hover, #page-content-wrapper #pager .pagination > li > a.active {
   color: white;
   background: #23b9e7;
 }
-/* line 132, ../../app/styles/main.scss */
+/* line 126, ../../app/styles/main.scss */
 #page-content-wrapper .articles {
   min-height: 525px;
 }
-/* line 135, ../../app/styles/main.scss */
+/* line 129, ../../app/styles/main.scss */
 #page-content-wrapper article {
   transition: all .5s ease;
   border-bottom: 1px solid #dde0e2;
   padding: 10px 0;
 }
-/* line 141, ../../app/styles/main.scss */
+/* line 135, ../../app/styles/main.scss */
 #page-content-wrapper article.new-repo {
   background: #23b9e7;
   color: white;
 }
-/* line 146, ../../app/styles/main.scss */
+/* line 140, ../../app/styles/main.scss */
 #page-content-wrapper article:first-child {
   border-top: 1px solid #dde0e2;
 }
-/* line 150, ../../app/styles/main.scss */
+/* line 144, ../../app/styles/main.scss */
 #page-content-wrapper article .title {
   font-weight: 600;
   font-size: 1.2rem;
   color: #566c7a;
 }
-/* line 155, ../../app/styles/main.scss */
+/* line 149, ../../app/styles/main.scss */
 #page-content-wrapper article p {
   color: #c4ccd1;
   margin-bottom: 0;
   font-size: 1rem;
 }
-/* line 160, ../../app/styles/main.scss */
+/* line 154, ../../app/styles/main.scss */
 #page-content-wrapper article a:hover {
   text-decoration: none;
   background: #f4f9fb;
   border-bottom: 1px solid #23b9e7;
 }
-/* line 165, ../../app/styles/main.scss */
+/* line 159, ../../app/styles/main.scss */
 #page-content-wrapper article button {
   margin-left: 5px;
   height: 14px;
@@ -182,7 +176,7 @@ body {
   padding-bottom: 14px;
 }
 
-/* line 175, ../../app/styles/main.scss */
+/* line 169, ../../app/styles/main.scss */
 #sidebar-wrapper {
   padding-top: 10px;
   min-height: 620px;
@@ -190,15 +184,15 @@ body {
   float: left;
   border-right: 1px solid #dde0e2;
 }
-/* line 181, ../../app/styles/main.scss */
+/* line 175, ../../app/styles/main.scss */
 #sidebar-wrapper ul {
   padding-left: 0px;
 }
-/* line 184, ../../app/styles/main.scss */
+/* line 178, ../../app/styles/main.scss */
 #sidebar-wrapper li {
   list-style: none;
 }
-/* line 186, ../../app/styles/main.scss */
+/* line 180, ../../app/styles/main.scss */
 #sidebar-wrapper li a {
   display: block;
   padding: 12px 26px;
@@ -206,14 +200,23 @@ body {
   color: #c4ccd1;
   border-left: 2px solid white;
 }
-/* line 192, ../../app/styles/main.scss */
+/* line 186, ../../app/styles/main.scss */
 #sidebar-wrapper li a:hover, #sidebar-wrapper li a.active {
   color: #23b9e7;
   border-left: 2px solid #23b9e7;
 }
-/* line 197, ../../app/styles/main.scss */
+/* line 191, ../../app/styles/main.scss */
 #sidebar-wrapper li a i {
   font-size: 1.2rem;
+}
+
+/* line 199, ../../app/styles/main.scss */
+.modal-body .dropdown button {
+  text-align: left;
+}
+/* line 202, ../../app/styles/main.scss */
+.modal-body .dropdown .dropdown-menu > li > a {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */

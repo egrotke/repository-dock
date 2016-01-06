@@ -6,21 +6,6 @@ var repoApp = angular.module('repoApp', [
     'repoControllers'
 ]);
 
-// repoApp.service('repoService', function($http) {
-//     var repos;
-
-//     $http.get('json/repos.json').success(function(data) {
-//         repos = data.repos;
-
-//         // repos.forEach(function(item) {
-//         //     if ($scope.accounts.indexOf(item.account) === -1) {
-//         //         $scope.accounts.push(item.account);
-//         //     }
-//         // });
-//     });
-
-//     return repos;
-// });
 
 repoApp.factory('repoService', function($http) {
   var repoService = {

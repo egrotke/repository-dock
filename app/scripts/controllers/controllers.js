@@ -44,9 +44,17 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope',
                 return Math.ceil($scope.filteredRepos.length / $scope.maxItemsPerPage);
             }
         };
+        $scope.sanitizeInput = function(input) {
+            return input.replace(/(<([^>]+)>)/ig,"");
+        };
         $scope.addRepo = function(formRepo) {
-            var newRepoObj = $.extend({}, formRepo), $newRepo;
+            var newRepoObj = $.extend({}, formRepo),
+                $newRepo;
 
+            newRepoObj.title = $scope.sanitizeInput(newRepoObj.title);
+            newRepoObj.description = $scope.sanitizeInput(newRepoObj.description);
+            console.log(newRepoObj);
+            console.log(newRepoObj.description);
             $scope.repos.unshift(newRepoObj);
             $("#newRepoModal").modal('hide').on('hidden.bs.modal', function() {
                 $scope.form.newRepoForm.$setPristine(true);
@@ -87,8 +95,6 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope',
             $scope.form.title = "";
             $scope.form.description = "";
             $scope.form.isPrivate = false;
-            // console.log("mainCtrl reset");
-        	// console.log($scope.form);
         };
 
         $scope.switchFilter = function(newFilter) {
@@ -135,4 +141,3 @@ repoControllers.controller('BuildsCtrl', ['$scope',
         $scope.title = "Builds";
     }
 ]);
-

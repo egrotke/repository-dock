@@ -19,10 +19,12 @@
 </div>
 <section class="articles">
     <article ng-repeat="item in filteredRepos = (repos | filter:{account:accountFilter}) | startFrom:(currentPage-1)*maxItemsPerPage | limitTo:maxItemsPerPage track by $index" class="repo">
-        <a href="/repo/{{item.id}}"><span class="account-and-name">{{item.account}}/<span class="title">{{item.title}}</span>
+        <a href="/repo/{{item.id}}">
+        <span class="account-and-name">{{item.account}}/<span class="title">{{item.title}}</span>
         <span ng-show="{{item.isPrivate}}" class="btn-private">private</span>
         </span>
-        <p>{{item.description}}</p></a>
+        <p>{{item.description}}</p>
+        </a>
     </article>
 </section>
 <div id="pager">
@@ -49,11 +51,11 @@
         </div>
         <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" ng-bind-html="form.title" class="form-control" id="title" placeholder="Title" required>
+            <input type="text" ng-model="form.title" class="form-control" id="title" placeholder="Title" required>
         </div>
         <div class="form-group">
             <label for="description">Description:</label>
-            <input type="text" ng-bind-html="form.description" class="form-control" id="description" placeholder="Description">
+            <input type="text" ng-model="form.description" class="form-control" id="description" placeholder="Description">
         </div>
         <div class="form-group">
             <label for="description">Private account?</label> &nbsp;
