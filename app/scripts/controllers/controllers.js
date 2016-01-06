@@ -86,6 +86,7 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope',
             $scope.form.account = "";
             $scope.form.title = "";
             $scope.form.description = "";
+            $scope.form.isPrivate = false;
             // console.log("mainCtrl reset");
         	// console.log($scope.form);
         };
