@@ -20,13 +20,6 @@ repoApp.factory('repoService', function($http) {
                 // The then function here is an opportunity to modify the response
                 // The return value gets picked up by the then in the controller.
 
-                // var dataArray = [];
-                // angular.forEach(response.data, function(item) {
-                //     dataArray.push(item);
-                // });
-                // console.log(dataArray);
-                // console.log(response);
-
                 return response.data;
             });
             // Return the promise to the controller

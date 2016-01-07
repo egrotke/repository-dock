@@ -23,14 +23,14 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope', 'cacheService',
         var repoCache = cacheService.get('repoData');
         if (repoCache) {
             $scope.repos = repoCache;
-            console.log('using cacheService');
+            // console.log('using cacheService');
             $scope.repos.forEach(function(item) {
                 if ($scope.accounts.indexOf(item.account) === -1) {
                     $scope.accounts.push(item.account);
                 }
             });
         } else {
-            console.log('using repoService');
+            // console.log('using repoService');
             repoService.async().then(function(d) {
                 $scope.repos = d.repos;
                 cacheService.put('repoData', d.repos);
@@ -67,8 +67,6 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope', 'cacheService',
             newRepoObj.id = $scope.repos.length;
             newRepoObj.title = $scope.sanitizeInput(newRepoObj.title);
             newRepoObj.description = $scope.sanitizeInput(newRepoObj.description);
-            console.log(newRepoObj);
-            console.log(newRepoObj.description);
             $scope.repos = $scope.repos.concat([newRepoObj]);
             cacheService.put('repoData', $scope.repos);
 
@@ -122,14 +120,20 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope', 'cacheService',
     }
 ]);
 
-repoControllers.controller('RepoCtrl', ['repoService', '$scope', '$routeParams',
-    function RepoCtrl(repoService, $scope, $routeParams) {
+repoControllers.controller('RepoCtrl', ['repoService', '$scope', '$routeParams', 'cacheService',
+    function RepoCtrl(repoService, $scope, $routeParams, cacheService) {
         var id = $scope.id = $routeParams.id;
-        repoService.async().then(function(d) {
-            $scope.repos = d.repos;
-            $scope.item = $scope.repos[id];
-        });
 
+        var repoCache = cacheService.get('repoData');
+        if (repoCache) {
+            $scope.repos = repoCache;
+            $scope.item = $scope.repos[id];
+        } else {
+            repoService.async().then(function(d) {
+                $scope.repos = d.repos;
+                $scope.item = $scope.repos[id];
+            });
+        }
     }
 ]);
 
