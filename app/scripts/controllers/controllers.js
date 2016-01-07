@@ -15,22 +15,18 @@ repoControllers.controller('sidebarCtrl', ['$scope',
     }
 ]);
 
-repoControllers.controller('MainCtrl', ['repoService', '$scope', 'cacheService',
-    function MainCtrl(repoService, $scope, cacheService) {
-        $scope.accounts = [];
+repoControllers.controller('MainCtrl', ['repoService', '$scope', 'cacheService', 'accountsCacheService',
+    function MainCtrl(repoService, $scope, cacheService, accountsCacheService) {
 
 
         var repoCache = cacheService.get('repoData');
+        var accountsCache = accountsCacheService.get('accounts');
+
+        $scope.accounts = [];
         if (repoCache) {
             $scope.repos = repoCache;
-            // console.log('using cacheService');
-            $scope.repos.forEach(function(item) {
-                if ($scope.accounts.indexOf(item.account) === -1) {
-                    $scope.accounts.push(item.account);
-                }
-            });
+            $scope.accounts = accountsCache;
         } else {
-            // console.log('using repoService');
             repoService.async().then(function(d) {
                 $scope.repos = d.repos;
                 cacheService.put('repoData', d.repos);
@@ -40,8 +36,11 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope', 'cacheService',
                         $scope.accounts.push(item.account);
                     }
                 });
+                accountsCacheService.put('accounts', $scope.accounts);
             });
         }
+
+
         $scope.accountFilter = "";
         $scope.currentPage = 1;
         $scope.maxItemsPerPage = 8;

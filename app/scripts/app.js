@@ -10,6 +10,10 @@ repoApp.factory('cacheService', ['$cacheFactory', function($cacheFactory) {
     return $cacheFactory('repoData');
 }]);
 
+repoApp.factory('accountsCacheService', ['$cacheFactory', function($cacheFactory) {
+    return $cacheFactory('accounts');
+}]);
+
 repoApp.factory('repoService', function($http) {
     var repoService = {
         async: function() {
