@@ -8,39 +8,42 @@ var repoApp = angular.module('repoApp', [
 
 
 repoApp.factory('repoService', function($http) {
-  var repoService = {
-    async: function() {
-      // $http returns a promise, which has a then function, which also returns a promise
-      var promise = $http.get('../json/repos.json').then(function (response) {
-        // The then function here is an opportunity to modify the response
-        // console.log(response);
-        // The return value gets picked up by the then in the controller.
-        return response.data;
-      });
-      // Return the promise to the controller
-      return promise;
-    }
-  };
-  return repoService;
+    var repoService = {
+        async: function() {
+            // $http returns a promise, which has a then function, which also returns a promise
+            var promise = $http.get('../json/repos.json', {
+                cache: true
+            }).then(function(response) {
+                // The then function here is an opportunity to modify the response
+                // console.log(response);
+                // The return value gets picked up by the then in the controller.
+
+                return response.data;
+            });
+            // Return the promise to the controller
+            return promise;
+        }
+    };
+    return repoService;
 });
 
 repoApp.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
         $routeProvider.
         when('/', {
-            templateUrl: 'views/main.html',
+            templateUrl: '/views/main.html',
             controller: 'MainCtrl'
         }).when('/dashboard', {
-            templateUrl: 'views/dashboard.html',
+            templateUrl: '/views/dashboard.html',
             controller: 'DashboardCtrl'
         }).when('/profile', {
-            templateUrl: 'views/profile.html',
+            templateUrl: '/views/profile.html',
             controller: 'ProfileCtrl'
         }).when('/builds', {
-            templateUrl: 'views/builds.html',
+            templateUrl: '/views/builds.html',
             controller: 'BuildsCtrl'
         }).when('/settings', {
-            templateUrl: 'views/settings.html',
+            templateUrl: '/views/settings.html',
             controller: 'SettingsCtrl'
         }).when('/repo/:id', {
             templateUrl: '../views/repo.html',
@@ -62,6 +65,22 @@ repoApp.filter('startFrom', function() {
         if (input) {
             return input.slice(start);
         }
+    };
+});
+
+repoApp.filter('orderObject', function() {
+    return function(items, reverse) {
+        var filtered = [];
+        angular.forEach(items, function(item) {
+            filtered.push(item);
+        });
+        filtered.sort(function(a, b) {
+            return a.id - b.id ;
+        });
+        if (reverse) {
+            filtered.reverse();
+        }
+        return filtered;
     };
 });
 

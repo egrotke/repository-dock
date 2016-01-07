@@ -18,9 +18,10 @@
     </div>
 </div>
 <section class="articles">
-    <article ng-repeat="item in filteredRepos = (repos | filter:{account:accountFilter}) | startFrom:(currentPage-1)*maxItemsPerPage | limitTo:maxItemsPerPage track by $index" class="repo">
+    <article ng-repeat="item in filteredRepos = (repos | orderObject:true | filter:{account:accountFilter}) | startFrom:(currentPage-1)*maxItemsPerPage | limitTo:maxItemsPerPage track by $index" class="repo">
         <a href="/repo/{{item.id}}">
-        <span class="account-and-name">{{item.account}}/<span class="title">{{item.title}}</span>
+        <span class="account-and-name">{{item.account}}/
+        <span class="title">{{item.title}}</span>
         <span ng-show="{{item.isPrivate}}" class="btn-private">private</span>
         </span>
         <p>{{item.description}}</p>

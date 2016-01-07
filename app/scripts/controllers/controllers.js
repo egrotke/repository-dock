@@ -51,11 +51,12 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope',
             var newRepoObj = $.extend({}, formRepo),
                 $newRepo;
 
+            newRepoObj.id = $scope.repos.length;
             newRepoObj.title = $scope.sanitizeInput(newRepoObj.title);
             newRepoObj.description = $scope.sanitizeInput(newRepoObj.description);
             console.log(newRepoObj);
             console.log(newRepoObj.description);
-            $scope.repos.unshift(newRepoObj);
+            $scope.repos = $scope.repos.concat([newRepoObj]);
             $("#newRepoModal").modal('hide').on('hidden.bs.modal', function() {
                 $scope.form.newRepoForm.$setPristine(true);
                 // $(this).find('form')[0].reset();
