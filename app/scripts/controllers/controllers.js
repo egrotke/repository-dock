@@ -15,20 +15,33 @@ repoControllers.controller('sidebarCtrl', ['$scope',
     }
 ]);
 
-repoControllers.controller('MainCtrl', ['repoService', '$scope',
-    function MainCtrl(repoService, $scope) {
+repoControllers.controller('MainCtrl', ['repoService', '$scope', 'cacheService',
+    function MainCtrl(repoService, $scope, cacheService) {
         $scope.accounts = [];
 
-        repoService.async().then(function(d) {
-            $scope.repos = d.repos;
 
+        var repoCache = cacheService.get('repoData');
+        if (repoCache) {
+            $scope.repos = repoCache;
+            console.log('using cacheService');
             $scope.repos.forEach(function(item) {
                 if ($scope.accounts.indexOf(item.account) === -1) {
                     $scope.accounts.push(item.account);
                 }
             });
-        });
+        } else {
+            console.log('using repoService');
+            repoService.async().then(function(d) {
+                $scope.repos = d.repos;
+                cacheService.put('repoData', d.repos);
 
+                $scope.repos.forEach(function(item) {
+                    if ($scope.accounts.indexOf(item.account) === -1) {
+                        $scope.accounts.push(item.account);
+                    }
+                });
+            });
+        }
         $scope.accountFilter = "";
         $scope.currentPage = 1;
         $scope.maxItemsPerPage = 8;
@@ -45,7 +58,7 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope',
             }
         };
         $scope.sanitizeInput = function(input) {
-            return input.replace(/(<([^>]+)>)/ig,"");
+            return input.replace(/(<([^>]+)>)/ig, "");
         };
         $scope.addRepo = function(formRepo) {
             var newRepoObj = $.extend({}, formRepo),
@@ -57,6 +70,8 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope',
             console.log(newRepoObj);
             console.log(newRepoObj.description);
             $scope.repos = $scope.repos.concat([newRepoObj]);
+            cacheService.put('repoData', $scope.repos);
+
             $("#newRepoModal").modal('hide').on('hidden.bs.modal', function() {
                 $scope.form.newRepoForm.$setPristine(true);
                 // $(this).find('form')[0].reset();

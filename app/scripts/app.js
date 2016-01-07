@@ -6,6 +6,9 @@ var repoApp = angular.module('repoApp', [
     'repoControllers'
 ]);
 
+repoApp.factory('cacheService', ['$cacheFactory', function($cacheFactory) {
+    return $cacheFactory('repoData');
+}]);
 
 repoApp.factory('repoService', function($http) {
     var repoService = {
@@ -15,8 +18,14 @@ repoApp.factory('repoService', function($http) {
                 cache: true
             }).then(function(response) {
                 // The then function here is an opportunity to modify the response
-                // console.log(response);
                 // The return value gets picked up by the then in the controller.
+
+                // var dataArray = [];
+                // angular.forEach(response.data, function(item) {
+                //     dataArray.push(item);
+                // });
+                // console.log(dataArray);
+                // console.log(response);
 
                 return response.data;
             });
@@ -75,7 +84,7 @@ repoApp.filter('orderObject', function() {
             filtered.push(item);
         });
         filtered.sort(function(a, b) {
-            return a.id - b.id ;
+            return a.id - b.id;
         });
         if (reverse) {
             filtered.reverse();
