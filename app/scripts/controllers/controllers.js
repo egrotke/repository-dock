@@ -18,10 +18,10 @@ repoControllers.controller('sidebarCtrl', ['$scope',
 repoControllers.controller('MainCtrl', ['repoService', '$scope', 'cacheService', 'accountsCacheService',
     function MainCtrl(repoService, $scope, cacheService, accountsCacheService) {
 
-
         var repoCache = cacheService.get('repoData');
         var accountsCache = accountsCacheService.get('accounts');
 
+        $scope.reposArray = [];
         $scope.accounts = [];
         if (repoCache) {
             $scope.repos = repoCache;
@@ -29,7 +29,12 @@ repoControllers.controller('MainCtrl', ['repoService', '$scope', 'cacheService',
         } else {
             repoService.async().then(function(d) {
                 $scope.repos = d.repos;
-                cacheService.put('repoData', d.repos);
+
+                angular.forEach($scope.repos, function(item) {
+                    $scope.reposArray.push(item);
+                });
+
+                cacheService.put('repoData', $scope.reposArray);
 
                 $scope.repos.forEach(function(item) {
                     if ($scope.accounts.indexOf(item.account) === -1) {

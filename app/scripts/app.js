@@ -76,17 +76,14 @@ repoApp.filter('startFrom', function() {
 
 repoApp.filter('orderObject', function() {
     return function(items, reverse) {
-        var filtered = [];
-        angular.forEach(items, function(item) {
-            filtered.push(item);
-        });
-        filtered.sort(function(a, b) {
+
+        items.sort(function(a, b) {
             return a.id - b.id;
         });
         if (reverse) {
-            filtered.reverse();
+            items.reverse();
         }
-        return filtered;
+        return items;
     };
 });
 
